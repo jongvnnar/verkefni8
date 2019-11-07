@@ -54,10 +54,7 @@ const text = (() => {
       let inp = el("input", "item__edit");
       inp.type = "text";
       inp.value = txt;
-      console.log(e);
-      console.log(parent);
-      // console.log(e.target);
-      // console.log(inp);
+    
       parent.replaceChild(inp, e.target);
       inp.focus();
     }
@@ -80,14 +77,15 @@ const text = (() => {
     let checkbox = el("input", "item__checkbox", finish);
     checkbox.type = "checkbox";
     let span = el("span","item__text", edit);
-    span.innerHTML = value;
+    span.innerText = value;
     let button = el("button", "item__button", deleteItem);
-    button.innerHTML = "Eyða";
+    button.innerText = "Eyða";
     
-    items.appendChild(item);
     item.appendChild(checkbox);
     item.appendChild(span);
     item.appendChild(button);
+
+    items.appendChild(item);
   }
 
   // event handler til að eyða færslu
