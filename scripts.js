@@ -24,15 +24,16 @@ const text = (() => {
     items.addEventListener('keyup', (e) => {
       commit(e);
     });
+    
   }
 
   function formHandler(e) {
     e.preventDefault();
     let input = document.querySelector(".form__input");
     let value = input.value;
+    input.value = "";
     if(value && value.trim()){
     add(value);
-    input.value = "";
     console.log(value);
     console.log('halló heimur');
     }
@@ -47,18 +48,17 @@ const text = (() => {
 
   // event handler fyrir það að breyta færslu
   function edit(e) {
-    const parent = e.target.parentNode;
     if(e.target.classList.contains("item__text")){
+      const parent = e.target.parentNode;
       let txt = e.target.innerHTML;
-      e.target.remove();
       let inp = el("input", "item__edit");
-      inp.setAttribute('type', 'text');
+      inp.type = "text";
       inp.value = txt;
       console.log(e);
       console.log(parent);
       // console.log(e.target);
       // console.log(inp);
-      parent.insertBefore(inp, parent.querySelector(".item__button"));
+      parent.replaceChild(inp, e.target);
       inp.focus();
     }
   }
